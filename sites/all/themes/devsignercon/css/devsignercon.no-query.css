@@ -52,7 +52,7 @@ h1 {
   color: #58b7dd;
   line-height: 1.23;
   letter-spacing: 0;
-  font-weight: bold;
+  font-weight: 400;
   margin-top: 0.325em;
   margin-bottom: 0.625em; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/base\/_typography\.scss}line{font-family:\0000316}}
@@ -76,7 +76,7 @@ h2 {
   color: #58b7dd;
   line-height: 1.23;
   letter-spacing: 0;
-  font-weight: bold;
+  font-weight: 400;
   margin-top: 0.325em;
   margin-bottom: 0.625em; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/base\/_typography\.scss}line{font-family:\0000316}}
@@ -100,7 +100,7 @@ h3 {
   color: #58b7dd;
   line-height: 1.23;
   letter-spacing: 0;
-  font-weight: bold;
+  font-weight: 400;
   margin-top: 0.325em;
   margin-bottom: 0.625em; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/base\/_typography\.scss}line{font-family:\0000316}}
@@ -124,7 +124,7 @@ h4 {
   color: #58b7dd;
   line-height: 1.23;
   letter-spacing: 0;
-  font-weight: bold;
+  font-weight: 400;
   margin-top: 0.325em;
   margin-bottom: 0.625em; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/base\/_typography\.scss}line{font-family:\0000316}}
@@ -148,7 +148,7 @@ h5 {
   color: #58b7dd;
   line-height: 1.23;
   letter-spacing: 0;
-  font-weight: bold;
+  font-weight: 400;
   margin-top: 0.325em;
   margin-bottom: 0.625em; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/base\/_typography\.scss}line{font-family:\0000316}}
@@ -172,7 +172,7 @@ h6 {
   color: #58b7dd;
   line-height: 1.23;
   letter-spacing: 0;
-  font-weight: bold;
+  font-weight: 400;
   margin-top: 0.325em;
   margin-bottom: 0.625em; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/base\/_typography\.scss}line{font-family:\0000316}}
