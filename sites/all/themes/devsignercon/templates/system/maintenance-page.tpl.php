@@ -86,6 +86,9 @@
               <li>
                 <a target="_blank" href="https://docs.google.com/forms/d/1u8DZRYu1C5x17kSP2Irk-lc1zOyt0tu0pjxzXbl_UKM/viewform">Be a Volunteer!</a>
               </li>
+              <li>
+                <a href="mailto:info@devsignercon.com">Become a Sponsor!</a>
+              </li>
             </ul>
           </article>
           
