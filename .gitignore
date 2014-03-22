@@ -1,0 +1,18 @@
+# Ignore configuration files that may contain sensitive information.
+sites/*/settings*.php
+
+# Ignore paths that contain user-generated content.
+sites/*/files
+sites/*/private
+
+# Ignore OS cache files
+.DS_Store
+.thumbs_db
+.thumbs
+
+# Ignore sass cache files
+sites/*/themes/*/.sass-cache
+
+# Ignore nodeJS modules and other libraries that are only used for local development
+sites/*/themes/*/node_modules
+sites/*/themes/*/bower_components

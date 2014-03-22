@@ -1,0 +1,496 @@
+<?php
+
+/**
+ * @file
+ * Mailchimp lists module.
+ */
+module_load_include('inc', 'mailchimp_lists', 'includes/mailchimp_lists.field');
+
+/**
+ * Implements hook_menu().
+ */
+function mailchimp_lists_menu() {
+  $items = array();
+
+  $items['admin/config/services/mailchimp/lists'] = array(
+    'title' => 'Lists',
+    'description' => 'Display MailChimp Lists and configure Webhooks.',
+    'page callback' => 'mailchimp_lists_overview_page',
+    'access arguments' => array('administer mailchimp'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'includes/mailchimp_lists.admin.inc',
+    'weight' => 10,
+  );
+  $items['admin/config/services/mailchimp/lists/%/webhook/%'] = array(
+    'title' => 'Enable/disable Webhooks',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mailchimp_lists_webhook_form', 5, 7),
+    'access arguments' => array('administer mailchimp'),
+    'file' => 'includes/mailchimp_lists.admin.inc',
+  );
+
+
+  return $items;
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function mailchimp_lists_entity_delete($entity, $type) {
+  // Check for mailchimp subscription fields and unsubscribe accordingly.
+  $fields = field_info_fields();
+  foreach($fields as $field) {
+    if ($field['type'] == 'mailchimp_lists_subscription' && in_array($entity->type, $field['bundles'][$type])) {
+      $instance = field_info_instance($type, $field['field_name'], $entity->type);
+      mailchimp_lists_process_subscribe_form_choices(array('subscribe' => FALSE), $instance, $field, $entity);
+    }
+  }
+}
+
+/**
+ * Helper function to check if a valid email is configured for an entity field.
+ *
+ * Returns an email address or FALSE.
+ */
+function mailchimp_lists_load_email($instance, $entity, $log_errors = TRUE) {
+  $entity_wrapper = entity_metadata_wrapper($instance['entity_type'], $entity);
+  if (!isset($instance['settings']['mergefields']['EMAIL'])) {
+    if ($log_errors) {
+      watchdog('mailchimp_lists', 'Mailchimp Lists field "@field" on @entity -> @bundle has no EMAIL field configured, subscription actions cannot take place.', array(
+        '@field' => $instance['field_name'],
+        '@entity' => $instance['entity_type'],
+        '@bundle' => $instance['bundle'],
+      ), WATCHDOG_NOTICE);
+    }
+    return FALSE;
+  }
+  $email = $entity_wrapper->{$instance['settings']['mergefields']['EMAIL']}->value();
+  // @todo: more stringent email verification.
+  if (strlen($email)) {
+    return $email;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Implements hook_forms().
+ * 
+ * This allows each field's subscription-form rendering to have a unique form
+ * ID. If this weren't the case, multiple forms getting rendered on a single
+ * entity display would have submit button conflicts.
+ */
+function mailchimp_lists_forms($form_id, $args) {
+  $forms = array();
+  if (isset($args[3]['type']) && $args[3]['type'] == "mailchimp_lists_subscription") {
+    $forms['mailchimp_lists_' . $args[0]['field_name'] . '_form'] = array(
+      'callback' => 'mailchimp_lists_subscribe_form',
+    );
+  }
+  return $forms;
+}
+
+/**
+ * Return a form element for a single newsletter.
+ */
+function mailchimp_lists_subscribe_form($form, &$form_state, $instance, $settings, $entity, $field) {
+  $mc_list = mailchimp_get_list($field['settings']['mc_list_id']);
+  $email = mailchimp_lists_load_email($instance, $entity);
+  if (!$email) {
+    return array();
+  }
+  // Determine if a user is subscribed to the list.
+  $is_subscribed = mailchimp_is_subscribed($mc_list['id'], $email);
+  $wrapper_key = 'mailchimp_' . $instance['field_name'];
+  $form_state['settings'] = array(
+    'wrapper_key' => $wrapper_key,
+    'instance' => $instance,
+    'field' => $field,
+    'entity' => $entity,
+  );
+  $form[$wrapper_key] = array(
+    '#type' => 'container',
+    '#tree' => TRUE,
+    '#description' => $instance['description'],
+    '#attributes' => array(
+      'class' => array(
+        'mailchimp-newsletter-wrapper',
+        'mailchimp-newsletter-' . $instance['field_name'],
+      ),
+    ),
+  );
+  // Add the title and description to lists for anonymous users or if requested:
+  $form[$wrapper_key]['subscribe'] = array(
+    '#type' => 'checkbox',
+    '#title' => 'Subscribe',
+    '#disabled' => $instance['required'],
+    '#required' => $instance['required'],
+    '#default_value' => $instance['required'] || $is_subscribed,
+  );
+  // Present interest groups:
+  if ($settings['show_interest_groups']) {
+    // Perform test in case error comes back from MCAPI when getting groups:
+    if (is_array($mc_list['intgroups'])) {
+      $form[$wrapper_key]['interest_groups'] = array(
+        '#type' => 'fieldset',
+        '#title' => isset($settings['interest_groups_label']) ? t($settings['interest_groups_label']) : t('Interest Groups'),
+        '#weight' => 100,
+        '#states' => array(
+          'invisible' => array(
+            ':input[name="' . $wrapper_key . '[subscribe]"]' => array('checked' => FALSE),
+          ),
+        ),
+      );
+      $form[$wrapper_key]['interest_groups'] += mailchimp_interest_groups_form_elements($mc_list, $instance['default_value'][0]['options']['interest_groups'], $email);
+    }
+  }
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save'),
+  );
+  return $form;
+}
+
+/**
+ * Submit handler to add emails to lists when editing/creating an entity.
+ */
+function mailchimp_lists_subscribe_form_submit($form, &$form_state) {
+  mailchimp_lists_process_subscribe_form_choices(
+    $form_state['values'][$form_state['settings']['wrapper_key']],
+    $form_state['settings']['instance'], 
+    $form_state['settings']['field'], 
+    $form_state['settings']['entity']);
+}
+
+/**
+ * Processor for various list form submissions.
+ *
+ * Subscription blocks, user settings, and new user creation.
+ * 
+ * @array $choices
+ *   An array representing the form values selected.
+ * @array $instance
+ *   A mailchimp_lists_subscription field instance configuration.
+ * @array $field
+ *   A mailchimp_lists_subscription field definition.
+ * @entity $entity
+ *   An Entity that has the $instance field.
+ */
+function mailchimp_lists_process_subscribe_form_choices($choices, $instance, $field, $entity) {
+  $email = mailchimp_lists_load_email($instance, $entity);
+  if (!$email) {
+    // We can't do much subscribing without an email address.
+    return;
+  }
+  $function = FALSE;
+  $list_id = $field['settings']['mc_list_id'];
+  $subscribed = mailchimp_is_subscribed($list_id, $email);
+  if ($choices['subscribe'] != $subscribed) {
+    // Subscription selection has changed.
+    if ($choices['subscribe']) {
+      $function = 'add';
+    }
+    else {
+      $function = 'remove';
+    }
+  }
+  elseif($choices['subscribe']) {
+    $function = 'update';
+  }
+  if ($function) {
+    if ($function == 'remove') {
+      $mergevars = array();
+    }
+    else {
+      $mergevars = _mailchimp_lists_mergevars_populate($instance['settings']['mergefields'], $entity, $instance['entity_type']);
+      if (!empty($choices['interest_groups'])) {
+        $mergevars['GROUPINGS'] = mailchimp_reformat_groupings($choices['interest_groups']);
+      }
+    }
+    switch ($function) {
+      case 'add':
+        $ret = mailchimp_subscribe($list_id, $email, $mergevars, $field['settings']['double_opt_in']);
+        break;
+
+      case 'remove':
+        $ret = mailchimp_unsubscribe($list_id, $email, TRUE);
+        break;
+
+      case 'update':
+        $ret = mailchimp_update_member($list_id, $email, $mergevars);
+        break;
+    }
+    if (empty($ret)) {
+      drupal_set_message(t('There was a problem with your newsletter signup.'), 'warning');
+    }
+  }
+}
+
+/**
+ * Helper function to complete a mailchimp-api-ready mergevars array.
+ */
+function _mailchimp_lists_mergevars_populate($mergefields, $entity, $entity_type) {
+  $wrapper = entity_metadata_wrapper($entity_type, $entity);
+  $mergevars = array();
+  foreach($mergefields as $label => $property) {
+    if (!empty($property) && strlen($property)) {
+      $mergevars[$label] = $wrapper->{$property}->value();
+    }
+  }
+  drupal_alter('mailchimp_lists_mergevars', $mergevars, $entity, $entity_type);
+  return $mergevars;
+}
+
+/**
+ * Implements hook_mollom_form_list().
+ *
+ * Enable Mollom integration for user subscription forms.
+ */
+function mailchimp_lists_mollom_form_list() {
+  $forms = array();
+  $forms['mailchimp_lists_subscribe_form'] = array(
+    'title' => t('Mailchimp Newsletter Subscription Fields'),
+  );
+
+  return $forms;
+}
+
+/**
+ * Implements hook_mollom_form_info().
+ */
+function mailchimp_lists_mollom_form_info($form_id) {
+  // Set mollom form info.
+  $form_info = array(
+    'bypass access' => array('administer mailchimp'),
+    'mode' => MOLLOM_MODE_CAPTCHA,
+  );
+
+  return $form_info;
+}
+
+/**
+ * Return all possible Drupal properties for a given entity type.
+ *
+ * @param string $entity_type
+ *   Name of entity whose properties to list.
+ * @param string $entity_bundle
+ *   Optional bundle to limit available properties.
+ *
+ * @return array
+ *   List of properties that can be used as an #options list.
+ */
+function mailchimp_lists_fieldmap_options($entity_type, $entity_bundle = NULL) {
+  $options = array('' => t('-- Select --'));
+
+  $properties = entity_get_all_property_info($entity_type);
+  if (isset($entity_bundle)) {
+    $info = entity_get_property_info($entity_type);
+    $properties = $info['properties'];
+    if (isset($info['bundles'][$entity_bundle])) {
+      $properties += $info['bundles'][$entity_bundle]['properties'];
+    }
+  }
+
+  foreach ($properties as $key => $property) {
+    $type = isset($property['type']) ? entity_property_extract_innermost_type($property['type']) : 'text';
+    $is_entity = ($type == 'entity') || (bool) entity_get_info($type);
+    // Leave entities out of this.
+    if (!$is_entity) {
+      if (isset($property['field']) && $property['field'] && !empty($property['property info'])) {
+        foreach ($property['property info'] as $sub_key => $sub_prop) {
+          $options[$property['label']][$key . ':' . $sub_key] = $sub_prop['label'];
+        }
+      }
+      else {
+        $options[$key] = $property['label'];
+      }
+    }
+  }
+  return $options;
+}
+
+/**
+ * Implements hook_action_info().
+ */
+function mailchimp_lists_action_info() {
+  $actions = array(
+    'mailchimp_lists_add_to_segment_action' => array(
+      'type' => 'entity',
+      'label' => t('Add to MailChimp Lists Segment'),
+      'configurable' => FALSE,
+      'triggers' => array('any'),
+      'vbo_configurable' => TRUE,
+    ),
+  );
+  return $actions;
+}
+
+/**
+ * Action function for the Add To Segment action.
+ * 
+ * Does the actual subscription work. Builds a queue of segment adds and then
+ * intermittently builds a batched API action from the queue and sends to
+ * Mailchimp.
+ */
+function mailchimp_lists_add_to_segment_action($entity, $context = array()) {
+  $entity_info = entity_get_info($context['entity_type']);
+  $list_id = $context['mc_list_id'];
+  $field_instance = field_info_instance($context['entity_type'], $context['mailchimp_field'], $entity->{$entity_info['entity keys']['bundle']});
+  $email = mailchimp_lists_load_email($field_instance, $entity);
+  $queue_id = 'mailchimp_lists_action_' . $list_id . '_' . $context['segment_id'];
+  if ($email) {
+    mailchimp_segment_add_subscriber($list_id, $context['segment_id'], $email, TRUE, $queue_id);
+  }
+  // Send to Mailchimp in a batch when we are done, or when we reach 10000, as
+  // 10000 records is the maximum batch size Mailchimp recommends.
+  if ($context['progress']['current'] == $context['progress']['total'] || !($context['progress']['current'] % 10000)) {
+    $batch_queue = DrupalQueue::get($queue_id);
+    $batch_queue->createQueue();
+    $queue_count = $batch_queue->numberOfItems();
+    if ($queue_count > 0) {
+      $count = 0;
+      $batch = array();
+      while ($count < $queue_count) {
+        if ($item = $batch_queue->claimItem()) {
+          $batch[] = $item->data['item'];
+          $batch_queue->deleteItem($item);
+        }
+        $count++;
+      }
+      mailchimp_segment_batch_add_subscribers($list_id, $context['segment_id'], $batch);
+    }
+  }
+}
+
+/**
+ * An action configuration form for performing Add To Segment actions.
+ */
+function mailchimp_lists_add_to_segment_action_form($context, &$form_state) {
+  $form = array();
+  $mailchimp_field_options = array();
+  $form_state['mc_list_ids'] = array();
+  foreach ($context['settings']['mailchimp_field'] as $field) {
+    if ($info = field_info_field($field)) {
+      $form_state['mc_list_ids'][$field] = $info['settings']['mc_list_id'];
+      $bundle = reset($info['bundles'][$context['entity_type']]);
+      $instance_info = field_info_instance($context['entity_type'], $field, $bundle);
+      $mailchimp_field_options[$field] = t("@label (@fieldname)",
+        array(
+          '@label' => $instance_info['label'],
+          '@fieldname' => $field,
+        ));
+    }
+  }
+  $form['mailchimp_field'] = array(
+    '#type' => 'select',
+    '#title' => "Select a Mailchimp List",
+    '#options' => $mailchimp_field_options,
+    '#required' => TRUE,
+    '#ajax' => array(
+      'callback' => 'mailchimp_lists_segment_action_callback',
+      'wrapper' => 'segment-wrapper',
+    ),
+  );
+
+  if (empty($form_state['values']['mailchimp_field'])) {
+    $form['segment'] = array(
+      '#prefix' => '<div id="segment-wrapper">',
+      '#suffix' => '</div>',
+    );
+  }
+  else {
+    $segments = mailchimp_get_segments($form_state['mc_list_ids'][$form_state['values']['mailchimp_field']]);
+    $seg_options = array(
+      0 => '-- Create New Segment --',
+    );
+    foreach ($segments['static'] as $segment) {
+      $seg_options[$segment['id']] = $segment['name'];
+    }
+    $form['segment'] = array(
+      '#type' => 'select',
+      '#title' => "Select a static segment to add subscribed entities to.",
+      '#description' => "Only records that have the appropriate list field on their bundle, and are already subscribed to the list, will be added.",
+      '#id' => 'segment-wrapper',
+      '#options' => $seg_options,
+    );
+  }
+  $form['new_segment'] = array(
+    '#type' => 'textfield',
+    '#title' => "Name for your new segment",
+    '#states' => array(
+      'required' => array(
+        ':input[name="segment"]' => array('value' => 0),
+      ),
+      'visible' => array(
+        ':input[name="segment"]' => array('value' => 0),
+      ),
+      'invisible' => array(
+        ':input[name="mc_list_id"]' => array('value' => ''),
+      ),
+    ),
+  );
+
+  return $form;
+}
+
+/**
+ * Form handler for mailchimp_lists_add_to_segment_action_form().
+ */
+function mailchimp_lists_add_to_segment_action_submit($form, &$form_state) {
+  $mc_list_id = $form_state['mc_list_ids'][$form_state['values']['mailchimp_field']];
+  if (!$form_state['values']['segment']) {
+    $segment = mailchimp_segment_create($mc_list_id, $form_state['values']['new_segment'], 'static');
+    $form_state['values']['segment'] = $segment['id'];
+  }
+  $values = array(
+    'mailchimp_field' => $form_state['values']['mailchimp_field'],
+    'mc_list_id' => $mc_list_id,
+    'segment_id' => $form_state['values']['segment'],
+  );
+  return $values;
+}
+
+/**
+ * AJAX callback to return segments for a given list.
+ */
+function mailchimp_lists_segment_action_callback($form, $form_state) {
+  $ret = $form['segment'];
+  return $ret;
+}
+
+/**
+ * Implements hook_views_bulk_operations_form().
+ *
+ * Configuration option for adding VBO action
+ */
+function mailchimp_lists_add_to_segment_action_views_bulk_operations_form($options, $entity_type, $dom_id) {
+  $field_options = array();
+  $fields = field_read_fields(array(
+      'type' => 'mailchimp_lists_subscription',
+      'entity_type' => $entity_type,
+    )
+  );
+  foreach ($fields as $field) {
+    $info = field_info_field($field['field_name']);
+    if (isset($info['bundles'][$entity_type])) {
+      $bundle = reset($info['bundles'][$entity_type]);
+      $instance_info = field_info_instance($entity_type, $field['field_name'], $bundle);
+      $field_options[$field['field_name']] = t("@label (@fieldname)",
+        array(
+          '@label' => $instance_info['label'],
+          '@fieldname' => $field['field_name'],
+        ));
+    }
+  }
+  $form['mailchimp_field'] = array(
+    '#type' => 'select',
+    '#title' => t('Mailchimp List Field'),
+    '#options' => $field_options,
+    '#multiple' => TRUE,
+    '#description' => t('Select the mailchimp fields for which to allow segmentation.'),
+    '#default_value' => isset($options['mailchimp_field']) ? $options['mailchimp_field'] : NULL,
+    '#required' => TRUE,
+  );
+  return $form;
+}

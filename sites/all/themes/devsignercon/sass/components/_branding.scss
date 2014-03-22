@@ -1,0 +1,25 @@
+.site-logo {
+  display: block;
+  padding: 1.5em 0;
+}
+
+.branding--tagline {
+  font-family: $Lato;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.branding--tagline__date {
+  @include respond-to($medium) {
+    @include span-columns(6);
+  }
+}
+
+.branding--tagline__location {
+  @include respond-to($medium) {
+    @include span-columns(6);
+    @include omega;
+  }
+}

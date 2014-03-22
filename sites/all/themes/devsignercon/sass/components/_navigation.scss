@@ -1,0 +1,149 @@
+/**
+ * Navigation bar.
+ */
+%main-menu {
+  background-color: transparent;
+  padding: rhythm(1) 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  @include respond-to($medium) {}
+}
+
+// Top level li
+%main-menu__top {
+  @include respond-to($medium, max-width) {}
+  @include respond-to($medium) {
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+  @include respond-to($large) {}
+  
+  &:hover,
+  &:focus {
+    > a {
+      outline: 0;
+      @include respond-to($medium) {
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Top level links
+%main-menu__top-links {
+  @include adjust-font-size-to( 18px, 1 );
+  outline: none;
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+  display: block;
+  font-weight: normal;
+  font-family: $sans-serif;
+  &:link,
+  &:visited {
+    outline: 0;
+    color: $grey;
+    text-decoration: none;
+  }
+  &:active {
+    background-color: $black;
+    outline: 0;
+    color: $white;
+  }
+  @include respond-to($medium) {
+    @include transition(all 300ms ease);
+    background-color: transparent;
+    display: inline-block;
+  }
+}
+
+// Dropdown
+%main-menu__submenu {
+  display: none;
+  background-color: white;
+  margin: 0;
+  @include respond-to($medium) {
+    @include box-sizing(border-box);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    z-index: 9;
+    min-width: 220px;
+    
+    li:last-child & {
+      left: auto;
+      right: 0;
+    }
+  }
+}
+
+// Dropdown links
+%main-menu__submenu-links {
+  color: $blue;
+  display: block;
+  padding: 10px 20px;
+  text-align: left;
+  
+  &:hover,
+  &:focus {
+    background-color: rgba(74, 130, 148, 0.2);
+  }
+}
+
+// Menu Region Styles
+.w-navigation {
+  border-top: 5px solid tint($grey, 20%);
+  margin-top: 1.5em;
+}
+
+#main-menu {
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  
+  @include respond-to($medium) {
+    background-color: $white;
+    padding: 0;
+    
+    #toggle-button,
+    [for="toggle-button"] {
+      @include element-invisible;
+    }
+  }
+  .block {
+    margin-bottom: 0;
+  }
+
+  ul,
+  li {
+    list-style-type: none;
+    list-style-image: none;
+  }
+
+  /* Main menu and secondary menu links and menu block links. */
+  .menu {
+    @extend %main-menu;
+    // Top level menu items
+    > .level-1 {
+      @extend %main-menu__top;
+      > a {
+        @extend %main-menu__top-links;
+      }
+      // Hello subnav!
+      &.clicked ul {
+        display: block;
+      }
+    }
+    // Submenu
+    ul {
+      @extend %main-menu__submenu;
+      > .level-2 {
+        > a {
+          @extend %main-menu__submenu-links;
+        }
+      }
+    }
+  }
+}

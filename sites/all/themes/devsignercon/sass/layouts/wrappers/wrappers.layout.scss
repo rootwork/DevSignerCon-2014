@@ -1,0 +1,137 @@
+@import "../../variables/**/*";
+@import "../../abstractions/mixins";
+
+/*******************************************************************************
+ * wrappers.layout.scss
+ *
+ * Styling of the "wrappers" layout demonstrating the Compass grid extension Susy
+ * and building mobile first layouts.
+ ******************************************************************************/
+@import "susyone";
+
+// Set consistent vertical and horizontal spacing units.
+$vert-spacing-unit: 0px;
+$horz-spacing-unit: 1em;
+
+$container-style: magic;
+$container-width: 74em;
+$total-columns  : 12;
+$column-width   : 5.3em;
+$gutter-width   : 1.2em;
+$grid-padding   : $gutter-width;
+
+
+// Breakpoints
+$small: 600px;
+$medium: 900px;
+$large: 1024px;
+$xLarge: 1280px;
+
+* {
+  @include box-sizing(border-box);
+}
+
+.page,
+.zone {
+  width: 100%;
+  position: relative;
+}
+
+.w-header {
+  padding-top: 56px;
+  
+  @include respond-to($medium) {
+    padding-top: 0;
+  }
+}
+
+.l-header {}
+.l-navigation {}
+.l-breadcrumb {}
+.l-highlight {}
+.l-preface {}
+.l-main {}
+.l-sub {}
+.l-postscript {}
+.l-sidebar-first {}
+.l-sidebar-second {}
+.l-footer {}
+.l-footer-sub {}
+
+.l-header,
+.l-navigation,
+.l-breadcrumb,
+.l-highlight,
+.l-preface,
+.l-main,
+.l-postscript,
+.l-footer,
+.l-footer-sub {
+  @include container; // Define these elements as the grid containers.
+  //margin-bottom: $vert-spacing-unit;
+  position: relative;
+  // Debugging Grid info for testing widths across devices
+  // @include susy-grid-background;
+}
+
+.l-branding {
+  text-align: center;
+  
+  @include respond-to($medium) {
+    @include span-columns(12);
+  }
+  
+  .site-logo img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.l-region--header {
+  @include respond-to($medium) {
+    @include span-columns(12);
+  }
+}
+
+.l-branding,
+.l-region--header {}
+
+@include respond-to($medium) {
+  /* Content Area */
+  .l-content {
+    @include span-columns($total-columns);
+  }
+  /* Sidebars */
+  .has-one-sidebar {
+    .l-content {
+      @include span-columns(8);
+    }
+    .l-sidebar-first,
+    .l-sidebar-second {
+      @include span-columns(4);
+      @include omega;
+    }
+  }
+  .has-two-sidebars {
+    .l-sidebar-first {
+      @include span-columns(3);
+    }
+    .l-content {
+      @include span-columns(5)
+    }
+    .l-sidebar-second {
+      @include span-columns(4);
+      @include omega;
+    }
+  }
+}
+
+.l-navigation {}
+
+.w-footer {}
+
+.l-region--help,
+.l-sidebar-first,
+.l-sidebar-second {
+  margin-bottom: $vert-spacing-unit;
+}
