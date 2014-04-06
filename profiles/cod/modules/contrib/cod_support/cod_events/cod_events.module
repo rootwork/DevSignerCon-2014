@@ -133,7 +133,7 @@ function cod_events_form_alter(&$form, &$form_state, $form_id) {
   if(isset($form['og_group_ref'])) {
     if (!empty($default_event) && $form_state['field']['og_group_ref'][LANGUAGE_NONE]['items_count'] === 0 && !user_access('administer content')) {
       if (!empty($default_event)) {
-        $form['og_group_ref']['und'][0]['default']['#default_value'] = (int)$default_event[0]->content_id;
+        //$form['og_group_ref']['und'][0]['default']['#default_value'] = (int)$default_event[0]->content_id;
         $form['og_group_ref']['#access'] = FALSE;
       }
     }

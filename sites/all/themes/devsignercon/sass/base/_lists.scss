@@ -1,3 +1,23 @@
 .links__inline {
-  @include inline--separated;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  
+  li {
+    border-bottom: 1px solid rgba($grey, 0.3);
+    padding: 0.5em 0;
+    
+    &:last-child {
+      border-bottom: medium none;
+    }
+  }
+  
+  @include respond-to($medium) {
+    @include inline--separated;
+    
+    li {
+      border-bottom: medium none;
+      padding: 0 0.5em;
+    }
+  }
 }

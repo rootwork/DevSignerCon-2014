@@ -1,16 +1,30 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/devsignercon\.maintenance\.scss}line{font-family:\000031}}
+/* $sans-serif: "Lato", helvetica, arial, sans-serif; */
+/* $sans-serif: "Lato", helvetica, arial, sans-serif; */
+/**
+ * functions
+ */
+/**
+ * Respond to mixin for use with susy grids and breakpoint
+ */
+/**
+ * Utility Mixins
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/devsignercon\.maintenance\.scss}line{font-family:\000034}}
 .header--intro {
   text-align: center;
-  padding: 0 1.5em;
-  width: 80%;
   max-width: 800px;
   margin: 0 auto; }
+  @media screen and (min-width: 56.25em) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/devsignercon\.maintenance\.scss}line{font-family:\000034}}
+    .header--intro {
+      padding: 0 1.5em;
+      width: 80%; } }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/devsignercon\.maintenance\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/devsignercon\.maintenance\.scss}line{font-family:\0000315}}
 .header--intro__heading,
 .venue--map {
   padding: 1.5em 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/devsignercon\.maintenance\.scss}line{font-family:\0000315}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/devsignercon\.maintenance\.scss}line{font-family:\0000321}}
 .maintenance-page .block--links {
   text-align: center; }

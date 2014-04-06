@@ -27,15 +27,7 @@
   width: 100%;
   position: relative; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000340}}
-.w-header {
-  padding-top: 56px; }
-  @media screen and (min-width: 56.25em) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000340}}
-    .w-header {
-      padding-top: 0; } }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000353}}
 .l-header,
 .l-navigation,
 .l-breadcrumb,
@@ -67,23 +59,23 @@
     display: table;
     clear: both; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000377}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000369}}
 .l-branding {
   text-align: center; }
   @media screen and (min-width: 56.25em) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000377}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000369}}
     .l-branding {
       width: 100%;
       float: left;
       margin-right: 1.5625%;
       display: inline; } }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000384}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000376}}
   .l-branding .site-logo img {
     width: 100%;
     height: auto; }
 
 @media screen and (min-width: 56.25em) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000390}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000382}}
   .l-region--header {
     width: 100%;
     float: left;
@@ -92,7 +84,7 @@
 
 @media screen and (min-width: 56.25em) {
   /* Content Area */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003101}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000393}}
   .l-content {
     width: 100%;
     float: left;
@@ -100,13 +92,13 @@
     display: inline; }
 
   /* Sidebars */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003106}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000398}}
   .has-one-sidebar .l-content {
     width: 66.14583%;
     float: left;
     margin-right: 1.5625%;
     display: inline; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003109}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003101}}
   .has-one-sidebar .l-sidebar-first,
   .has-one-sidebar .l-sidebar-second {
     width: 32.29167%;
@@ -118,19 +110,19 @@
     *margin-left: -1.2em;
     display: inline; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003116}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003108}}
   .has-two-sidebars .l-sidebar-first {
     width: 23.82812%;
     float: left;
     margin-right: 1.5625%;
     display: inline; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003119}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003111}}
   .has-two-sidebars .l-content {
     width: 40.75521%;
     float: left;
     margin-right: 1.5625%;
     display: inline; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003122}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003114}}
   .has-two-sidebars .l-sidebar-second {
     width: 32.29167%;
     float: left;
@@ -140,8 +132,8 @@
     margin-right: 0;
     *margin-left: -1.2em;
     display: inline; } }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003133}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003125}}
 .l-region--help,
 .l-sidebar-first,
 .l-sidebar-second {
-  margin-bottom: 0px; }
+  margin-bottom: 1.5em; }

@@ -10,7 +10,7 @@
 @import "susyone";
 
 // Set consistent vertical and horizontal spacing units.
-$vert-spacing-unit: 0px;
+$vert-spacing-unit: 1.5em;
 $horz-spacing-unit: 1em;
 
 $container-style: magic;
@@ -37,14 +37,6 @@ $xLarge: 1280px;
   position: relative;
 }
 
-.w-header {
-  padding-top: 56px;
-  
-  @include respond-to($medium) {
-    padding-top: 0;
-  }
-}
-
 .l-header {}
 .l-navigation {}
 .l-breadcrumb {}
@@ -68,7 +60,7 @@ $xLarge: 1280px;
 .l-footer,
 .l-footer-sub {
   @include container; // Define these elements as the grid containers.
-  //margin-bottom: $vert-spacing-unit;
+  //padding-bottom: $vert-spacing-unit;
   position: relative;
   // Debugging Grid info for testing widths across devices
   // @include susy-grid-background;

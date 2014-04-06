@@ -1,9 +1,15 @@
+@import "variables/**/*";
+@import "abstractions/mixins";
+
 .header--intro {
   text-align: center;
-  padding: 0 1.5em;
-  width: 80%;
   max-width: 800px;
   margin: 0 auto;
+  
+  @include respond-to($medium) {
+    padding: 0 1.5em;
+    width: 80%;
+  }
 }
 
 .header--intro__heading,

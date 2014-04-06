@@ -104,7 +104,6 @@
   z-index: 5;
   
   @include respond-to($medium) {
-    background-color: $white;
     padding: 0;
     
     #toggle-button,
