@@ -68,12 +68,8 @@
           
           <div class="header--intro intro">
             <?php print render($title_prefix); ?>
-            <?php if ($title): ?>
-              <h1 class="page--title"><?php print $title; ?></h1>
-            <?php endif; ?>
             <?php print render($title_suffix); ?>
             <?php print $messages; ?>
-            <?php print $content; ?>
             <h2 class="header--intro__heading intro__heading">Encouraging creativity in development while educating developers and designers.</h2>
             <p>Sessions subjects from non-technical to effectuation, this event is for YOU!</p>
           </div>

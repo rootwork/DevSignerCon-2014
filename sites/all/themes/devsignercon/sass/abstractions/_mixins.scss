@@ -180,6 +180,8 @@
     
     &:last-child a {
       border-right: medium none;
+      margin-right: 0;
+      padding-right: 0;
     }
     
     > ul {

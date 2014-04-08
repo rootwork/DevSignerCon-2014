@@ -27,4 +27,5 @@
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/devsignercon\.maintenance\.scss}line{font-family:\0000321}}
 .maintenance-page .block--links {
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 1.5em; }

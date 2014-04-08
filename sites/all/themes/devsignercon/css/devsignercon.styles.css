@@ -48,8 +48,10 @@
           padding-left: 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/abstractions\/_mixins\.scss}line{font-family:\00003181}}
         .links__inline > li:last-child a {
-          border-right: medium none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/abstractions\/_mixins\.scss}line{font-family:\00003185}}
+          border-right: medium none;
+          margin-right: 0;
+          padding-right: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/abstractions\/_mixins\.scss}line{font-family:\00003187}}
         .links__inline > li > ul {
           display: none; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/base\/_lists\.scss}line{font-family:\0000318}}
