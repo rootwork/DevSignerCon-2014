@@ -43,9 +43,16 @@ $header-font-sizes: $h1-font-size, $h2-font-size, $h3-font-size, $h4-font-size, 
   }
 }
 
+body {
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+
 a {
   @include transition(all 300ms ease 0s);
-  color: $link-blue;
+  border-bottom: 1px dotted $light-grey;
+  color: $green;
+  display: inline-block;
   text-decoration: none;
   
   &:link,
@@ -56,12 +63,25 @@ a {
   &.active,
   &.active-trail {
     display: inline-block;
-    vertical-align: bottom;
+    vertical-align: baseline;
     font-family: $copy-font-family;
   }
   
   &:hover,
-  &:focus {
-    color: $link-blue_over;
+  &:active {
+    border-bottom: 1px dotted $grey;
+    outline: 0 none;
+    color: $grey;
   }
+  &:focus {
+    outline: thin dotted;
+    color: $black;
+  }
+}
+
+::-moz-selection,
+::selection {
+  background-color: $green;
+  color: #012233;
+  text-shadow: none;
 }

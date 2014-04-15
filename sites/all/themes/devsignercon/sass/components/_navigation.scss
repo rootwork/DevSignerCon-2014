@@ -44,7 +44,7 @@
   @include adjust-font-size-to( 18px, 1 );
   outline: none;
   text-transform: uppercase;
-  padding: 1em 1.5em;
+  padding: 10px;
   display: block;
   font-weight: normal;
   font-family: $sans-serif;
@@ -63,6 +63,7 @@
     @include transition(all 300ms ease);
     background-color: transparent;
     display: inline-block;
+    padding: 1em 1.5em;
   }
 }
 
@@ -75,16 +76,22 @@
   
   @include respond-to($medium) {
     @include box-sizing(border-box);
+    @include box-shadow(3px 4px 6px rgba($light-grey, 0.7));
+    border-color: tint($light-grey, 25%) $light-grey $light-grey tint($light-grey, 25%);
+    border-style: solid;
+    border-width: 1px;
     position: absolute;
     width: 100%;
     left: 0;
     z-index: 9;
     min-width: 220px;
     
+/*
     li:last-child & {
       left: auto;
       right: 0;
     }
+*/
   }
 }
 
@@ -331,6 +338,7 @@
       }
       
       i {
+        @include transition(all 300ms ease 0s);
         background: url(../images/dropdown.png) no-repeat center center transparent;
         display: inline-block;
         position: absolute;
@@ -338,9 +346,17 @@
         height: 10px;
         margin-left: -9px;
         vertical-align: top;
-        top: 100%;
+        bottom: 0;
         left: 50%;
         opacity: 0.2;
+      }
+      
+      &:hover,
+      &:focus {
+        i {
+          @include transform(rotate(180deg));
+          opacity: 0.4;
+        }
       }
     }
     

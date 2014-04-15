@@ -45,5 +45,47 @@
       });
     }
   };
+  
+  Drupal.behaviors.mobileNav = {
+    attach: function(context, settings) {
+      // see whether device supports touch events (a bit simplistic, but...)
+      var hasTouch = ("ontouchstart" in window);
+       
+      // hook touch events for drop-down menus
+      // @note: if has touch events, then has standards event handling too
+      if (hasTouch && document.querySelectorAll) {
+        
+        var i, len, element, dropdowns = document.querySelectorAll("#main-menu li.dropdown > a");
+        
+        function menuTouch(event) {
+          // toggle flag for preventing click for this link
+          var i, noclick = !(this.dataNoclick);
+        
+          // reset flag on all links
+          for (i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].dataNoclick = false;
+          }
+        
+          // set new flag value and focus on dropdown menu
+          this.dataNoclick = noclick;
+          this.focus();
+        }
+        
+        function menuClick(event) {
+          // if click isn't wanted, prevent it
+          if (this.dataNoclick) {
+            event.preventDefault();
+          }
+        }
+     
+        for (i = 0; i < dropdowns.length; i++) {
+          element = dropdowns[i];
+          element.dataNoclick = false;
+          element.addEventListener("touchstart", menuTouch, false);
+          element.addEventListener("click", menuClick, false);
+        }
+      }
+    }
+  };
 
 })(jQuery);

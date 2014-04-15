@@ -143,21 +143,3 @@ function devsignercon_menu_link__main_menu_inner($vars) {
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . '</li>';
 }
-
-/**
- * Implements hook_form_FORM_ID_alter()
- */
-function devsignercon_form_session_node_form_alter(&$form, &$form_state, $form_id) {
-  $speakers = $form['field_speakers'][LANGUAGE_NONE];
-  $form['title']['#size'] = 34;
-/*
-  foreach ($speakers as $key) {
-    $form['field_speakers'][LANGUAGE_NONE][$key]['target_id']['#size'] = 34;
-  }
-*/
-  // Add AJAX Processing to session node add form
-  $form['actions']['submit']['#ajax'] = array(
-                                          'callback' => 'node_form_submit',
-                                        );
-  dsm($form);
-}

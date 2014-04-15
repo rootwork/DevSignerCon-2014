@@ -1,0 +1,169 @@
+p {
+  &.lead {
+    font-size: 20px;
+  }
+  
+  &.secondary {
+    font-size: 16px;
+  }
+  
+  &.tertiary {
+    font-size: 14.2px;
+  }
+  
+  .amp {
+    font-family: local("Georgia"), local("Garamond"), local("Palatino"), local("Book Antiqua");
+  }
+}
+
+blockquote {
+  margin: 0 0 1.5em 0;
+  padding: 12px;
+  background-color: $light-grey;
+  font-style: normal;
+
+  &:before,
+  &:after {
+    content: '';
+    content: none;
+  }
+  
+  &.pull-right {
+    float: right;
+    background-color: transparent;
+    
+    p,
+    small {
+      text-align: right;
+    }
+    
+    small {
+      &:before {
+        content: '';
+      }
+      &:after {
+        content: '\00A0 \2014';
+        color: $green;
+      }
+    }
+  }
+  
+  small {
+    &:before {
+      content: '\00A0 \2014';
+      color: $green;
+    }
+    
+    &:after {
+      content: '';
+    }
+  }
+   
+  cite {
+    font-style: normal;
+    color: $green;
+  }
+}
+
+q {
+  quotes: none;
+
+  &:before,
+  &:after {
+    content: '';
+    content: none;
+  }
+}
+
+dl {
+  margin-bottom: $base-line-height;
+  
+  &.dl-horizontal {
+    *zoom: 1;
+    
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both; }
+    dt {
+      float: left;
+      clear: left;
+      width: 30.38869258%;
+    }
+    dd {
+      margin-left: 32.99289258%;
+    }
+  }
+}
+
+dd {
+  margin-bottom: $base-line-height;
+}
+
+dt {
+  font-weight: bold;
+  color: $dark-grey;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted $light-grey;
+  cursor: help;
+}
+
+b,
+strong {
+  font-weight: bold;
+  color: $dark-grey;
+}
+
+dfn {
+  font-style: italic;
+}
+
+ins {
+  background-color: $light-grey;
+  color: #929292;
+  text-decoration: none;
+}
+
+mark {
+  background-color: $light-grey;
+  color: #929292;
+  font-style: italic;
+  font-weight: bold;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family: Monaco, Courier New, monospace;
+  font-size: 12.8px;
+  line-height: 1.325em;
+  color: #484040;
+}
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 12.8px;
+  line-height: 0;
+  vertical-align: baselineheight;
+}
+
+sup {
+  top: -.5em;
+}
+
+sub {
+  bottom: -.25em;
+}
