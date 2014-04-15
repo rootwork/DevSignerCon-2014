@@ -1,25 +1,70 @@
-.site-logo {
-  display: block;
+a.site-logo {
+  display: inline-block;
   padding: 1.5em 0;
+  max-width: 92px;
+  vertical-align: top;
+  
+  img {
+    -webkit-filter: drop-shadow(3px 4px 6px rgba(209,211,212,0.8));
+    filter: url("../js/helpers.svg#drop-shadow-light");
+    padding: 0.2em;
+  }
+}
+
+.logo-mark {
+  display: inline-block;
+  width: auto;
+  position: relative;
+}
+
+.site-name {
+  display: inline-block;
+  font-size: 124px;
+  letter-spacing: -0.03em;
+  margin: 0;
+  padding-top: 0.5em;
+  vertical-align: top;
+  
+  a {
+    &:link,
+    &:visited {
+      color: $blacknblue;
+    }
+    
+    &:hover,
+    &:focus,
+    &:active {
+      color: $blue;
+    }
+  }
+  
+  @for $i from 1 through 3 {
+    .char#{$i} {
+      font-family: $MisoR;
+      font-weight: 400;
+      letter-spacing: -0.05em;
+    }
+  }
 }
 
 .branding--tagline {
-  font-family: $Lato;
-  font-size: 32px;
-  font-weight: 700;
+  color: $grey;
+  font-family: "Arial";
+  font-size: 1.3rem;
+  font-weight: bold;
   text-align: center;
-  text-transform: uppercase;
-}
-
-.branding--tagline__date {
-  @include respond-to($medium) {
-    @include span-columns(6);
-  }
+  text-transform: lowercase;
 }
 
 .branding--tagline__location {
-  @include respond-to($medium) {
-    @include span-columns(6);
-    @include omega;
-  }
+  position: absolute;
+  left: 0.5em;
+  bottom: 0.15em;
+}
+
+.branding--tagline__date {
+  font-size: 1rem;
+  position: absolute;
+  right: 0.5em;
+  bottom: 0.25em;
 }

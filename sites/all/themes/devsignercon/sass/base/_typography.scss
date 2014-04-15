@@ -36,10 +36,15 @@ $header-font-sizes: $h1-font-size, $h2-font-size, $h3-font-size, $h4-font-size, 
         color: $link-blue_over;
       }
     }
+    
+    .subhead {
+      
+    }
   }
 }
 
 a {
+  @include transition(all 300ms ease 0s);
   color: $link-blue;
   text-decoration: none;
   
