@@ -1,5 +1,15 @@
 <svg height="0" xmlns="http://www.w3.org/2000/svg">
-  <filter id="drop-shadow">
+  <filter id="drop-shadow-light">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+    <feOffset dx="12" dy="12" result="offsetblur"/>
+    <feFlood flood-color="rgba(209,211,212,0.5)"/>
+    <feComposite in2="offsetblur" operator="in"/>
+    <feMerge>
+      <feMergeNode/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+  <filter id="drop-shadow-dark">
     <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
     <feOffset dx="12" dy="12" result="offsetblur"/>
     <feFlood flood-color="rgba(0,0,0,0.5)"/>

@@ -12,12 +12,19 @@
 
 // Top level li
 %main-menu__top {
-  @include respond-to($medium, max-width) {}
+  @include respond-to($medium, max-width) {
+    
+  }
   @include respond-to($medium) {
     display: inline-block;
     position: relative;
     margin: 0;
     padding: 0;
+    
+    input {
+      display: none;
+      visibility: hidden;
+    }
   }
   @include respond-to($large) {}
   
@@ -101,7 +108,14 @@
 #main-menu {
   text-align: center;
   position: relative;
+  outline: none !important;
   z-index: 5;
+  
+  * {
+    &:focus {
+      outline: none !important;
+    }
+  }
   
   @include respond-to($medium) {
     padding: 0;
@@ -122,7 +136,7 @@
   }
 
   /* Main menu and secondary menu links and menu block links. */
-  .menu {
+  .menu--main-menu {
     @extend %main-menu;
     // Top level menu items
     > .level-1 {
@@ -143,6 +157,215 @@
           @extend %main-menu__submenu-links;
         }
       }
+    }
+  }
+}
+
+#main-menu {
+  position: relative;
+  outline: none !important;
+  
+  * {
+    &:focus {
+      outline: none !important;
+    }
+  }
+  
+  @include respond-to($medium, max-width) {
+    > ul.menu--main-menu {
+      @include transform(scaleY(0));
+      @include transform-origin(50%, 0%);
+      @include transition-property(transform max-height);
+      @include transition-duration(600ms);
+      @include transition-delay(0ms);
+      max-height: 0;
+      height:100%;
+    }
+  
+    label[for="toggle-button"] {
+      width: 40px;
+      height: 49px;
+      margin: 10px 20px;
+      display: block;
+      background: url(../images/hamburger.png) no-repeat center;
+      position: absolute;
+      right: 0;
+      bottom: 100%;
+      @include respond-to($medium) {
+        display: none;
+        visibility: hidden;
+      }
+    }
+    
+    input#toggle-button[type=checkbox]:checked ~ label[for="toggle-button"] {
+      color: $off-white;
+      
+      &:after {
+        background-color: $grey;
+        color: $off-white;
+      }
+    }
+    
+    input#toggle-button[type=checkbox]:checked ~ ul.menu--main-menu {
+      @include box-shadow(0 2px 32px 3px rgba($grey, 0.7));
+      @include transform(scaleY(1));
+      @include transform-origin(0%, 0%);
+      @include transition-property(transform max-height);
+      @include transition-duration(600ms);
+      @include transition-delay(0ms);
+      max-height: 9999px;
+    }
+  }
+  
+  input#toggle-button[type=checkbox] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+}
+
+#main-menu .menu--main-menu .dropdown {
+  position: relative;
+
+  @include respond-to($medium, max-width) {
+    [data-toggle="dropdown"] {
+      display: block;
+      padding: 10px;
+      
+      &:before {
+        @include transition(transform 300ms);
+        @include transform(rotate(0deg));
+        position: absolute;
+        display: block;
+        content: '\25BC';
+        font-size: 0.7em;
+        top: 1em;
+        right: 1.5em;
+        z-index: 1;
+      }
+      
+      &:after {
+        background-color: rgba($light-grey, 0.3);
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 44px;
+        min-width: 44px;
+        height: 100%;
+        max-height: 44px;
+        cursor: pointer;
+        z-index: 2;
+      }
+    }
+    
+    > .dropdown-menu {
+      @include transform(scaleY(0));
+      @include transform-origin(50%, 0%);
+      @include transition-property(max-height, transform);
+      @include transition-duration(600ms, 300ms);
+      @include transition-delay(0s, 0s);
+      max-height: 0;
+      overflow: hidden;
+      background-color: rgba($light-grey, 0.3);
+      display: block;
+      margin: 0;
+      padding: 0;
+  
+      li {
+        padding: 0;
+  
+        a {
+          display: block;
+          padding: 10px 10px;
+        }
+      }
+    }
+    
+    > input[type="checkbox"] {
+      opacity: 0;
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 44px;
+      min-width: 44px;
+      height: 100%;
+      max-height: 44px;
+      cursor: pointer;
+      z-index: 3;
+      
+      &:checked ~ .dropdown-menu {
+        @include transform(scaleY(1));
+        @include transition-property(max-height, transform);
+        @include transition-duration(600ms, 300ms);
+        @include transition-delay(0s, 0s);
+        max-height: 9999px;
+        /* height: auto; */
+      }
+        
+      &:checked + a[data-toggle="dropdown"] {
+        &:before {
+          @include transform(rotate(-180deg));
+        }
+      }
+    }
+  }
+  
+  @include respond-to($medium) {
+    > input[type="checkbox"] {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+    }
+    
+    [data-toggle="dropdown"] {
+      position: relative;
+      
+      &:before,
+      &:after {
+        display: none;
+      }
+      
+      i {
+        background: url(../images/dropdown.png) no-repeat center center transparent;
+        display: inline-block;
+        position: absolute;
+        width: 18px;
+        height: 10px;
+        margin-left: -9px;
+        vertical-align: top;
+        top: 100%;
+        left: 50%;
+        opacity: 0.2;
+      }
+    }
+    
+    .dropdown-menu {
+      @include transform(scaleY(0));
+      @include transform-origin(50%, 0%);
+      @include transition-property(max-height, transform);
+      @include transition-duration(600ms, 300ms);
+      @include transition-delay(0s, 0s);
+      display: block;
+      max-height: 0;
+      top: 100%;
+    }
+      
+    &:hover,
+    &:focus {
+      overflow: visible;
+      
+      > .dropdown-menu {
+        @include transform(scaleY(1));
+        @include transition-property(max-height, transform);
+        @include transition-duration(600ms, 300ms);
+        @include transition-delay(0s, 0s);
+        max-height: 9999px;
+      }
+      
+      .theme-icon-arrow-down {}
     }
   }
 }
