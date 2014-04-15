@@ -1,8 +1,8 @@
 <svg height="0" xmlns="http://www.w3.org/2000/svg">
   <filter id="drop-shadow-light">
-    <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-    <feOffset dx="12" dy="12" result="offsetblur"/>
-    <feFlood flood-color="rgba(209,211,212,0.5)"/>
+    <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+    <feOffset dx="3" dy="4" result="offsetblur"/>
+    <feFlood flood-color="rgba(209,211,212,0.8)"/>
     <feComposite in2="offsetblur" operator="in"/>
     <feMerge>
       <feMergeNode/>
@@ -10,8 +10,8 @@
     </feMerge>
   </filter>
   <filter id="drop-shadow-dark">
-    <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-    <feOffset dx="12" dy="12" result="offsetblur"/>
+    <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+    <feOffset dx="3" dy="4" result="offsetblur"/>
     <feFlood flood-color="rgba(0,0,0,0.5)"/>
     <feComposite in2="offsetblur" operator="in"/>
     <feMerge>

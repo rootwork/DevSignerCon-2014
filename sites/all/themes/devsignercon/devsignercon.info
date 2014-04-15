@@ -17,6 +17,7 @@ stylesheets[all][] = css/devsignercon.no-query.css
 ; Scripts
 ; ========================================
 scripts[] = js/devsignercon.behaviors.js
+scripts[] = js/jquery.lettering.js
 
 ; ========================================
 ; Regions

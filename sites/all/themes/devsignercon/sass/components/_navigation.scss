@@ -71,6 +71,8 @@
   display: none;
   background-color: white;
   margin: 0;
+  padding: 0;
+  
   @include respond-to($medium) {
     @include box-sizing(border-box);
     position: absolute;
