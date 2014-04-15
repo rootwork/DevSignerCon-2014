@@ -1,11 +1,14 @@
-//Font Stacks
-/* $sans-serif: "Lato", helvetica, arial, sans-serif; */
+// Font Stacks
 $sans-serif: "Droid Sans", "Arial", "Helvetica", "Lucida Grande", "Verdana", "Gill Sans", sans-serif;
 $serif: "Droid Serif", "Georgia", "Times New Roman", "Palatino", "Hoefler Text", "Baskerville", serif; ;
 $Lato: "Lato", "Arial", "Helvetica", "Lucida Grande", "Verdana", "Gill Sans", sans-serif;
 $headings: "Abril Fatface", $serif;
+// Special fonts for Site logo
+$MisoL: "MisoLight";
+$MisoR: "MisoRegular";
+$MisoB: "MisoBold";
 
-//Typography
+// Typography
 $copy-color: $grey;
 $copy-font-family: $sans-serif;
 $copy-font-size: 16px;
