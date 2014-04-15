@@ -1,3 +1,44 @@
 img, media {
   max-width: 100%;
 }
+
+img {
+  max-width: 100%;
+  border-width: 0;
+  outline: none;
+  vertical-align: bottom;
+  -ms-interpolation-mode: bicubic;
+
+  &.img-rounded {
+    border-radius: 4px;
+  }
+  
+  &.img-polaroid {
+    padding: 8px;
+    background-color: $white;
+    border: 1px solid $light-grey;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  &.img-circle {
+    border-radius: 500px;
+    border: 8px solid $light-grey;
+  }
+}
+
+figure {
+  margin-bottom: 1.5em;
+  
+  img {
+    margin-bottom: 0.375em;
+  }
+  
+  figcaption {
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #030303;
+  }
+}
