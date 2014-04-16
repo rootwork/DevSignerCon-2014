@@ -13,19 +13,19 @@
  * Styling of the "wrappers" layout demonstrating the Compass grid extension Susy
  * and building mobile first layouts.
  ******************************************************************************/
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000330}}
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000334}}
 .page,
 .zone {
   width: 100%;
   position: relative; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000353}}
 .l-header,
 .l-navigation,
 .l-breadcrumb,
@@ -43,7 +43,7 @@
   margin-left: auto;
   margin-right: auto;
   position: relative; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/\.rbenv\/versions\/1\.9\.3-p194\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-core-1\.0\.0\.alpha\.19\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/\.rbenv\/versions\/1\.9\.3-p194\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-core-1\.0\.0\.alpha\.19\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
   .l-header:after,
   .l-navigation:after,
   .l-breadcrumb:after,
@@ -57,23 +57,23 @@
     display: table;
     clear: both; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000369}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000369}}
 .l-branding {
   text-align: center; }
   @media screen and (min-width: 56.25em) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000369}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000369}}
     .l-branding {
       width: 100%;
       float: left;
       margin-right: 1.5625%;
       display: inline; } }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000376}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000376}}
   .l-branding .site-logo img {
     width: 100%;
     height: auto; }
 
 @media screen and (min-width: 56.25em) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000382}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000382}}
   .l-region--header {
     width: 100%;
     float: left;
@@ -82,7 +82,7 @@
 
 @media screen and (min-width: 56.25em) {
   /* Content Area */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000393}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000393}}
   .l-content {
     width: 100%;
     float: left;
@@ -90,13 +90,13 @@
     display: inline; }
 
   /* Sidebars */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000398}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\0000398}}
   .has-one-sidebar .l-content {
     width: 66.14583%;
     float: left;
     margin-right: 1.5625%;
     display: inline; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003101}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003101}}
   .has-one-sidebar .l-sidebar-first,
   .has-one-sidebar .l-sidebar-second {
     width: 32.29167%;
@@ -108,19 +108,19 @@
     *margin-left: -1.2em;
     display: inline; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003108}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003108}}
   .has-two-sidebars .l-sidebar-first {
     width: 23.82812%;
     float: left;
     margin-right: 1.5625%;
     display: inline; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003111}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003111}}
   .has-two-sidebars .l-content {
     width: 40.75521%;
     float: left;
     margin-right: 1.5625%;
     display: inline; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003114}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003114}}
   .has-two-sidebars .l-sidebar-second {
     width: 32.29167%;
     float: left;
@@ -130,7 +130,7 @@
     margin-right: 0;
     *margin-left: -1.2em;
     display: inline; } }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003125}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/layouts\/wrappers\/wrappers\.layout\.scss}line{font-family:\00003125}}
 .l-region--help,
 .l-sidebar-first,
 .l-sidebar-second {
