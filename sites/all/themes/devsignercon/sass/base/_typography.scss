@@ -26,6 +26,7 @@ $header-font-sizes: $h1-font-size, $h2-font-size, $h3-font-size, $h4-font-size, 
       &:active,
       &.active,
       &.active-trail {
+        border-bottom: medium none;
         display: inline-block;
         vertical-align: bottom;
         font-family: $header-font-family;
