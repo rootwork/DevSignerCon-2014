@@ -1,3 +1,36 @@
+dl {
+  margin-bottom: $base-line-height;
+  
+  &.dl-horizontal {
+    *zoom: 1;
+    
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both; }
+    dt {
+      float: left;
+      clear: left;
+      width: 30.38869258%;
+    }
+    dd {
+      margin-left: 32.99289258%;
+    }
+  }
+}
+
+dd {
+  margin-bottom: $base-line-height;
+}
+
+dt {
+  font-weight: bold;
+  color: $dark-grey;
+}
+
 .links__inline {
   list-style: none outside none;
   margin: 0;
