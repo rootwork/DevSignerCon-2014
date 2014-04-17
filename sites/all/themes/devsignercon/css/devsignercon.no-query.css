@@ -290,6 +290,23 @@ figure {
     font-style: italic;
     color: #030303; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_tables\.scss}line{font-family:\000032}}
+td, th {
+  background-color: transparent;
+  border-bottom: 1px solid #e2e2e2; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_tables\.scss}line{font-family:\000036}}
+th {
+  background-color: transparent;
+  border-bottom: 1px solid #e2e2e2; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_tables\.scss}line{font-family:\0000314}}
+tr.odd {
+  background-color: #f3f9fd; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_tables\.scss}line{font-family:\0000317}}
+tr.even {
+  background-color: #fcfcfc; }
+
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_typography\.scss}line{font-family:\000034}}
 h1 {
   font-size: 2.5em;
@@ -366,7 +383,7 @@ h3 {
     color: #0a4168; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_typography\.scss}line{font-family:\000034}}
-h4 {
+h4, th {
   font-size: 1.25em;
   font-family: "MisoBold";
   font-style: normal;
@@ -377,17 +394,17 @@ h4 {
   margin-top: 0.325em;
   margin-bottom: 0.625em; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_typography\.scss}line{font-family:\0000316}}
-  h4 a:link, h4 a:visited {
+  h4 a:link, th a:link, h4 a:visited, th a:visited {
     color: #0f75bc;
     text-decoration: none; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_typography\.scss}line{font-family:\0000322}}
-  h4 a:link, h4 a:visited, h4 a:hover, h4 a:focus, h4 a:active, h4 a.active, h4 a.active-trail {
+  h4 a:link, th a:link, h4 a:visited, th a:visited, h4 a:hover, th a:hover, h4 a:focus, th a:focus, h4 a:active, th a:active, h4 a.active, th a.active, h4 a.active-trail, th a.active-trail {
     border-bottom: medium none;
     display: inline-block;
     vertical-align: bottom;
     font-family: "MisoBold"; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_typography\.scss}line{font-family:\0000335}}
-  h4 a:hover, h4 a:focus {
+  h4 a:hover, th a:hover, h4 a:focus, th a:focus {
     color: #0a4168; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_typography\.scss}line{font-family:\000034}}
