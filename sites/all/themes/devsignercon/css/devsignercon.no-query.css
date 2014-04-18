@@ -41,11 +41,17 @@ input[type=text], input[type=email], input[type=url], input[type=number], input[
   input[type=text]:hover, input[type=email]:hover, input[type=url]:hover, input[type=number]:hover, input[type=tel]:hover, textarea:hover {
     border-color: #929292; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_forms\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_forms\.scss}line{font-family:\0000313}}
+fieldset {
+  border-width: 1px;
+  border-color: #e2e2e2;
+  border-radius: 4px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_forms\.scss}line{font-family:\0000321}}
 .form-item label {
   font-family: "MisoBold";
   font-size: 1.25em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_forms\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_forms\.scss}line{font-family:\0000325}}
 label.option {
   font-family: "Droid Sans", "Arial", "Helvetica", "Lucida Grande", "Verdana", "Gill Sans", sans-serif;
   font-size: 18px; }

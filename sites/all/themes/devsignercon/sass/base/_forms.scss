@@ -1,13 +1,20 @@
 %texty-element {
 	border: {
-		width: 2px;
+		width: $large-border-width;
 		style: solid;
 		color: $light-grey;
-		radius: 4px;
+		radius: $small-border-radius;
 	}
 	padding: 6px 11px;
 	&:hover {
 		border-color: $grey;
+	}
+}
+fieldset {
+	border: {
+		width: $small-border-width;
+		color: $light-grey;
+		radius: $small-border-radius;
 	}
 }
 label {
