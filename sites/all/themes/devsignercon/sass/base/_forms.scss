@@ -7,6 +7,16 @@
 	}
 	padding: 6px 11px;
 }
+label {
+	.form-item & {
+		font-family: $header-font-family;
+		font-size: $h4-font-size;
+	}
+	&.option {
+		font-family: $sans-serif;
+		font-size: $base-font-size;
+	}
+}
 input {
 	&[type=text],
 	&[type=email],
