@@ -1,0 +1,21 @@
+%texty-element {
+	border: {
+		width: 2px;
+		style: solid;
+		color: $light-grey;
+		radius: 4px;
+	}
+	padding: 6px 11px;
+}
+input {
+	&[type=text],
+	&[type=email],
+	&[type=url],
+	&[type=number],
+	&[type=tel] {
+		@extend %texty-element;
+	}
+}
+textarea {
+	@extend %texty-element;
+}

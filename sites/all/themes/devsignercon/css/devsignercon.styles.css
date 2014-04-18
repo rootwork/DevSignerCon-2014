@@ -30,6 +30,14 @@
   src: url("../fonts/Miso/Miso Bold/miso-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Miso/Miso Bold/miso-bold-webfont.woff") format("woff"), url("../fonts/Miso/Miso Bold/miso-bold-webfont.ttf") format("truetype"), url("../fonts/Miso/Miso Bold/miso-bold-webfont.svg#misobold") format("svg");
   font-weight: 700;
   font-style: normal; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_forms\.scss}line{font-family:\000031}}
+input[type=text], input[type=email], input[type=url], input[type=number], input[type=tel], textarea {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #e2e2e2;
+  border-radius: 4px;
+  padding: 6px 11px; }
+
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_html\.scss}line{font-family:\000032}}
 p.lead {
   font-size: 20px; }
