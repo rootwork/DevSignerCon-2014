@@ -6,6 +6,9 @@
 		radius: 4px;
 	}
 	padding: 6px 11px;
+	&:hover {
+		border-color: $grey;
+	}
 }
 label {
 	.form-item & {
