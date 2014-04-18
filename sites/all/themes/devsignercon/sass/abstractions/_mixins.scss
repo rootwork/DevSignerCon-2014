@@ -191,11 +191,15 @@
 }
 
 // buttons
-@mixin make-button($radius: $small-border-radius, $background-color: $light-grey) {
+@mixin make-button($radius: $small-border-radius, $background-color: $light-grey, $hover-color: $grey) {
   background-color: $background-color;
   border-width: 0;
   border-radius: $small-border-radius;
   color: $black;
   font-family: $MisoB;
   padding: $form-element-padding;
+  &:hover {
+    background-color: $hover-color;
+    color: $white;
+  }
 }

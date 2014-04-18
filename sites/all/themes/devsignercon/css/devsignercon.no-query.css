@@ -64,6 +64,10 @@ input[type=submit], input[type=button] {
   color: #1a1a1a;
   font-family: "MisoBold";
   padding: 6px 11px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/abstractions\/_mixins\.scss}line{font-family:\00003201}}
+  input[type=submit]:hover, input[type=button]:hover {
+    background-color: #929292;
+    color: #fcfcfc; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_html\.scss}line{font-family:\000032}}
 p.lead {
