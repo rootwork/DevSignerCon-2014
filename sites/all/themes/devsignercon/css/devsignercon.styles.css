@@ -52,9 +52,18 @@ fieldset {
   font-family: "MisoBold";
   font-size: 1.25em; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_forms\.scss}line{font-family:\0000325}}
-label.option {
+label.option, label .field-edit-link {
   font-family: "Droid Sans", "Arial", "Helvetica", "Lucida Grande", "Verdana", "Gill Sans", sans-serif;
   font-size: 18px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_forms\.scss}line{font-family:\0000338}}
+input[type=submit], input[type=button] {
+  background-color: #e2e2e2;
+  border-width: 0;
+  border-radius: 4px;
+  color: #1a1a1a;
+  font-family: "MisoBold";
+  padding: 6px 11px; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/paul\/Dropbox\/DevSigner-local\/DevSignerCon-2014\/sites\/all\/themes\/devsignercon\/sass\/base\/_html\.scss}line{font-family:\000032}}
 p.lead {
