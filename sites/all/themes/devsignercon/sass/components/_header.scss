@@ -1,0 +1,19 @@
+.l-header.slideshow {
+min-height: 670px;
+@include respond-to($xSmall) {
+min-height: 600px;
+}
+}
+
+.l-branding {
+  position: relative;
+  z-index: 5;
+}
+
+.l-region--header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}

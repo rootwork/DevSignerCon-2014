@@ -9,6 +9,11 @@ a.site-logo {
     filter: url("../js/helpers.svg#drop-shadow-light");
     padding: 0.2em;
     max-width: 192px;
+    
+    .dark & {
+      -webkit-filter: drop-shadow(3px 4px 6px rgba(0,0,0,0.5));
+      filter: url("../js/helpers.svg#drop-shadow-dark");
+    }
   }
   
   @include respond-to($xSmall) {
@@ -34,14 +39,29 @@ a.site-logo {
   a {
     &:link,
     &:visited {
-      color: $blacknblue;
       border-bottom: medium none;
+      
+      .light & {
+        color: $blacknblue;
+        text-shadow: 3px 4px 6px rgba(209,211,212,0.8);
+      }
+      
+      .dark & {
+        color: $white;
+        text-shadow: 3px 4px 6px rgba(0,0,0,0.5);
+      }
     }
     
     &:hover,
     &:focus,
     &:active {
-      color: $blue;
+      .light & {
+        color: $blue;
+      }
+      
+      .dark & {
+        color: $light-blue
+      }
     }
   }
   
@@ -59,12 +79,21 @@ a.site-logo {
 }
 
 .branding--tagline {
-  color: $grey;
   font-family: "Arial";
   font-size: 1.3rem;
   font-weight: bold;
   text-align: center;
   text-transform: lowercase;
+  
+  .light & {
+    color: $grey;
+    text-shadow: 3px 4px 6px rgba(209,211,212,0.8);
+  }
+  
+  .dark & {
+    color: $blue;
+    text-shadow: 3px 4px 6px rgba(0,0,0,0.5);
+  }
 }
 
 .branding--tagline__location {

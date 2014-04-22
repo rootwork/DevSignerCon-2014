@@ -2,7 +2,7 @@
   <div class="container" id="container">
     <div class="z-header zone">
       <div class="w-header">
-        <header class="l-header" role="banner">
+        <header class="l-header <?php echo ($page['header'] ? 'slideshow dark' : 'light') ?>" role="banner">
           <div class="l-branding">
             <?php if ($site_name || $site_slogan || $logo): ?>
               <?php if ($logo): ?>

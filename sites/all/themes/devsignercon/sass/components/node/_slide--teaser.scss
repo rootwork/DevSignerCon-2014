@@ -1,0 +1,31 @@
+.node--slide__teaser {
+  @include box-sizing(border-box);
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0);
+  background-position: center top;
+  background-size: cover;
+  padding-top: 430px;
+  
+  @include respond-to($xSmall) {
+    padding-top: 350px;
+  }
+
+  .slide--content {
+    background-color: rgba($blacknblue, 0.8);
+    color: $white;
+    font-weight: 300;
+    position: relative;
+    min-height: 250px;
+    padding-top: 1em;
+    @include container();
+  }
+  
+  @for $i from 1 through 6 {
+    h#{$i} {
+      color: $white;
+      font-family: $MisoR;
+      font-weight: 400;
+      margin-top: 0;
+    }
+  }
+}

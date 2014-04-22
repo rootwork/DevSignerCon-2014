@@ -37,7 +37,10 @@ $xLarge: 1280px;
   position: relative;
 }
 
-.l-header {}
+.l-header {
+  position: relative;
+}
+
 .l-navigation {}
 .l-breadcrumb {}
 .l-highlight {}
@@ -50,7 +53,8 @@ $xLarge: 1280px;
 .l-footer {}
 .l-footer-sub {}
 
-.l-header,
+/* .l-header, */
+.l-branding,
 .l-navigation,
 .l-breadcrumb,
 .l-highlight,
@@ -69,9 +73,11 @@ $xLarge: 1280px;
 .l-branding {
   text-align: center;
   
+/*
   @include respond-to($medium) {
     @include span-columns(12);
   }
+*/
   
   .site-logo img {
     width: 100%;
@@ -80,9 +86,12 @@ $xLarge: 1280px;
 }
 
 .l-region--header {
+/*
+  position: relative;
   @include respond-to($medium) {
     @include span-columns(12);
   }
+*/
 }
 
 .l-branding,

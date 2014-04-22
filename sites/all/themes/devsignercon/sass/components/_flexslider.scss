@@ -1,0 +1,34 @@
+.flexslider {
+  @include border-radius(0);
+  @include box-shadow(none);
+  background-color: transparent;
+  border: medium none;
+  margin: 0;
+  padding: 0;
+}
+
+.flex-control-paging {
+  display: none;
+  bottom: 0;
+  z-index: 50;
+  
+  @include respond-to($xSmall) {
+    display: block;
+  }
+  
+  li {
+    vertical-align: middle;
+    
+    a {
+      @include border-radius(0);
+      background-color: $grey;
+      border: medium none;
+      width: 62px;
+      height: 6px;
+      
+      &.flex-active {
+        background-color: $pink;
+      }
+    }
+  }
+}
