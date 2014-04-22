@@ -112,7 +112,7 @@
 // Menu Region Styles
 .w-navigation {
   border-top: 5px solid tint($grey, 20%);
-  margin-top: 1.5em;
+  /* margin-top: 1.5em; */
 }
 
 #main-menu {
@@ -151,7 +151,8 @@
     // Top level menu items
     > .level-1 {
       @extend %main-menu__top;
-      > a {
+      > a,
+      > .nolink {
         @extend %main-menu__top-links;
       }
       // Hello subnav!

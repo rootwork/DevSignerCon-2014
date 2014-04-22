@@ -18,6 +18,7 @@ stylesheets[all][] = css/devsignercon.no-query.css
 ; ========================================
 scripts[] = js/devsignercon.behaviors.js
 scripts[] = js/jquery.lettering.js
+; scripts[] = js/jquery.resizeimagetoparent.js
 
 ; ========================================
 ; Regions
@@ -26,7 +27,7 @@ regions[branding] = Branding
 regions[header] = Header
 regions[navigation] = Navigation
 regions[breadcrumb] = Breadcrumb
-regions[highlighted] = Highlighted
+regions[highlight] = Highlight
 regions[preface] = Preface
 regions[help] = Help
 regions[content] = Content
