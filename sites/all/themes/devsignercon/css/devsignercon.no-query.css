@@ -1197,3 +1197,27 @@ a.site-logo {
     font-family: "MisoRegular";
     font-weight: 400;
     margin-top: 0; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/components\/node\/_slide--teaser\.scss}line{font-family:\0000334}}
+.node--slide__teaser {
+  overflow: hidden; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/components\/node\/_slide--teaser\.scss}line{font-family:\0000337}}
+  .node--slide__teaser .slide--content {
+    -moz-transition-property: top, opacity;
+    -o-transition-property: top, opacity;
+    -webkit-transition-property: top, opacity;
+    transition-property: top opacity;
+    -moz-transition-duration: 500ms;
+    -o-transition-duration: 500ms;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    -moz-transition-timing-function: ease-in;
+    -o-transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+    top: 250px;
+    opacity: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/BLadwin\/Sites\/DevSigner\/2014\/site\/sites\/all\/themes\/devsignercon\/sass\/components\/node\/_slide--teaser\.scss}line{font-family:\0000344}}
+    .flex-active-slide .node--slide__teaser .slide--content {
+      top: 0;
+      opacity: 1; }
