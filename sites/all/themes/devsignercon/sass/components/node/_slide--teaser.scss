@@ -32,18 +32,20 @@
 
 // FlexSlider content animations
 .node--slide__teaser {
-  overflow: hidden;
-  
-  .slide--content {
-    @include transition-property(top opacity);
-    @include transition-duration(500ms);
-    @include transition-timing-function(ease-in);
-    top: 250px;
-    opacity: 0;
+  .flexslider & {
+    overflow: hidden;
     
-    .flex-active-slide & {
-      top: 0;
-      opacity: 1;
+    .slide--content {
+      @include transition-property(top opacity);
+      @include transition-duration(500ms);
+      @include transition-timing-function(ease-in);
+      top: 250px;
+      opacity: 0;
+      
+      .flex-active-slide & {
+        top: 0;
+        opacity: 1;
+      }
     }
   }
 }
