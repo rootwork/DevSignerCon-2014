@@ -84,3 +84,12 @@ dt {
     }
   }
 }
+
+ul {
+  margin-left: 0;
+  padding-left: 1em;
+  ul {
+    list-style-type: none;
+    & li:before { content: "— "; }
+  }
+}
