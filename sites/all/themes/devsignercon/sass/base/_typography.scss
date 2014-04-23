@@ -53,7 +53,8 @@ body {
 a {
   @include transition(all 300ms ease 0s);
   border-bottom: 1px dotted $light-grey;
-  color: $green;
+  /* color: $green; */
+  color: $link-blue;
   display: inline-block;
   text-decoration: none;
   
@@ -75,6 +76,7 @@ a {
     outline: 0 none;
     color: $grey;
   }
+  
   &:focus {
     outline: thin dotted;
     color: $black;
