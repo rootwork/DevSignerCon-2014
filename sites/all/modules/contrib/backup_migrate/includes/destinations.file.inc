@@ -192,9 +192,6 @@ class backup_migrate_destination_files extends backup_migrate_destination {
    * Check that a web accessible directory has been properly secured, othewise attempt to secure it.
    */
   function check_web_dir($directory) {
-    // If the directory is specified with an absolute path, strip the site root.
-    $directory = substr(drupal_realpath($directory), strlen(DRUPAL_ROOT . '/'));
-
     file_create_htaccess($directory, TRUE);
 
     // Check the user agent to make sure we're not responding to a request from drupal itself.
@@ -232,7 +229,9 @@ class backup_migrate_destination_files extends backup_migrate_destination {
    * Check if the given directory is within the webroot and is therefore web accessible.
    */
   function dir_in_webroot($directory) {
-    if (strpos(drupal_realpath($directory), DRUPAL_ROOT) !== FALSE) {
+    $real_dir = drupal_realpath($directory);
+    $real_root = drupal_realpath(DRUPAL_ROOT);
+    if ($real_dir == $real_root || strpos($real_dir, $real_root . '/') === 0) {
       return TRUE;
     }
     return FALSE;
@@ -242,7 +241,10 @@ class backup_migrate_destination_files extends backup_migrate_destination {
    * Check if a file can be read remotely via http.
    */
   function test_file_readable_remotely($path, $contents) {
-    $url = $GLOBALS['base_url'] . '/' . str_replace('\\', '/', $path);
+    // Get the root relative path.
+    $relative_path = substr(drupal_realpath($path), strlen(drupal_realpath(DRUPAL_ROOT)));
+
+    $url = $GLOBALS['base_url'] . str_replace('\\', '/', $relative_path);
     $result = drupal_http_request($url);
     if (!empty($result->data) && strpos($result->data, $contents) !== FALSE) {
       return TRUE;
